@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h3>List of tasks</h3>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>State</th>
+        <th>Due Date</th>
+        <th></th>
+    </tr>
+
+{% for each_task in tasks %}
+    {% if each_task.is_past_due %}
+        <tr style="background-color: #FF0016">
+    {% else %}
+        {% if each_task.state == 1 %}
+        <tr style="background-color: #00bfff">
+        {% elif each_task.state == 2 %}
+        <tr style="background-color: #ffff00">
+        {% else %}
+        <tr style="background-color: #7cfc00">
+        {% endif %}
+    {% endif %}
+        <td>{{ each_task.name }}</td>
+        <td>{{ each_task.description }}</td>
+        <td>{{ each_task.get_priority_display }}</td>
+        <td>{{ each_task.get_state_display }}</td>
+        <td>{{ each_task.due_date }}</td>
+        <td><a href="/tasks/{{ each_task.id }}/edit/">Edit</a> / <a href="/tasks/{{ each_task.id }}/delete/">Delete</a> </td>
+    </tr>
+{% endfor %}
+</table>
+<br>
+    <a href="/tasks/create/">New Task</a>
+</body>
+</html>
