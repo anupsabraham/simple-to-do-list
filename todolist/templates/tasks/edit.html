@@ -4,12 +4,13 @@
     <title></title>
 </head>
 <body>
-<a href="/tasks/">Back</a>
+<a href="/tasks/">Back</a> /
+<a href="/logout/">Logout</a>
 <h3>Edit Task</h3>
 <form action="" method="post">
     {% csrf_token %}
     {{ task_form.as_p }}
-    <p>Accecptable date formats: yyyy/mm/dd , mm/dd/yyyy</p>
+    <p>Accecptable date formats: yyyy-mm-dd , mm/dd/yyyy</p>
     <input type="submit" value="Submit">
 </form>
 </body>

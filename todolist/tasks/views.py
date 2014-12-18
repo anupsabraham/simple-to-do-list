@@ -11,7 +11,7 @@ from tasks.models import Tasks
 @login_required()
 def list_tasks(request):
     temp_dict = {}
-    tasks = Tasks.objects.filter(user=request.user)
+    tasks = Tasks.objects.filter(user=request.user).order_by('due_date')
     temp_dict['tasks'] = tasks
     temp_dict['today'] = datetime.today()
     return render_to_response(

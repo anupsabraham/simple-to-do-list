@@ -21,6 +21,17 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('',
+    (r'^api/register/?$', 'rest_apis.views.register'),
+    (r'^api/login/?$', 'rest_apis.views.api_login'),
+    (r'^api/logout/?$', 'rest_apis.views.api_logout'),
+    (r'^api/tasks/create/?$', 'rest_apis.views.create_task'),
+    (r'^api/tasks/(?P<task_id>[\d]+?)/edit/?$', 'rest_apis.views.edit_task'),
+    (r'^api/tasks/?$', 'rest_apis.views.list_tasks'),
+    (r'^api/tasks/(?P<task_id>[\d]+?)/delete/?$', 'rest_apis.views.delete_task'),
+    (r'^api/tasks/(?P<task_id>[\d]+?)/view/?$', 'rest_apis.views.view_task'),
+)
+
+urlpatterns += patterns('',
     (r'^', include('allauth.urls')),
 )+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
